@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Dot Co.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #333333 !important;
+            color: white;
+        }
+        .navbar {
+            background-color: #281a66;
+            padding-left: 20px;
+        }
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .carousel-item img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            padding: 40px 0;
+        }
+        .card {
+            background: #444;
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .gallery-container .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 40px 0;
+        }
+        .team-container .card {
+            width: 200px;
+            text-align: center;
+        }
+        .team-container .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 9999;
+        }
+        .image-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .image-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Art Dot Co.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">My Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active"><img src="Photos/1.jfif" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="2.jfif" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="3.jfif" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="4.jpg" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="5.jpg" class="d-block w-100"></div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <section id="gallery" class="section">
+        <h2>Gallery</h2>
+        <div class="container gallery-container">
+            <div class="card"><img src="2.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="4.jpg" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="4.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="3.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="3.jpg" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="a.jpg" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="b.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="1.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="5.jpg" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="c.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="d.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="e.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="f.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="g.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="h.jfif" onclick="openOverlay(this)"></div>
+            <div class="card"><img src="i.jfif" onclick="openOverlay(this)"></div>
+        </div>
+    </section>
+
+    <div id="imageOverlay" class="image-overlay" onclick="closeOverlay()">
+        <img id="overlayImage">
+    </div>
+
+    <section id="team" class="section">
+        <h2>My Team</h2>
+        <div class="container team-container">
+            <div class="card"><img src="dino.jpg"><h5 class="card-title">Dino</h5></div>
+            <div class="card"><img src="pluvie.jpg"><h5 class="card-title">Pluvium</h5></div>
+            <div class="card"><img src="wlop.jpg"><h5 class="card-title">Wlop</h5></div>
+            <div class="card"><img src="quasar.jpg"><h5 class="card-title">Quasarcake</h5></div>
+        </div>
+    </section>
+
+    <script>
+        function openOverlay(imgElement) {
+            const overlay = document.getElementById("imageOverlay");
+            const overlayImg = document.getElementById("overlayImage");
+            overlayImg.src = imgElement.src; 
+            overlay.classList.add("active"); 
+        }
+        function closeOverlay() {
+            document.getElementById("imageOverlay").classList.remove("active");
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<!-- Map -->
+<div style="text-align: center; padding: 20px;">
+    <h2>Contact</h2>
+    <div style="width: 100%; max-width: 500px; margin: 0 auto;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3861.092199649998!2d120.97485847514334!3d14.58951667722652!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca12b8d41e07%3A0x8ed00b3e4674a9f7!2sLyceum%20of%20the%20Philippines%20University%20-%20Manila!5e0!3m2!1sen!2sph!4v1710423663814!5m2!1sen!2sph" 
+            width="100%" height="500" 
+            style="border:0; border-radius: 8px; display: block;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>
+<footer style="text-align: center; padding: 15px; background: #222; color: white; font-size: 14px;">
+    © 2025 Art Dot Co. LLC. All Rights Reserved.
+</footer>
+
